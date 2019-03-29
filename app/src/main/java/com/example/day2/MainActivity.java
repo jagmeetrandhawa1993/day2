@@ -34,8 +34,22 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 String email = edtEmail.getText().toString();
+                String password = edtPassword.getText().toString();
                 // Toast.makeText(getApplicationContext(), email, Toast.LENGTH_SHORT).show();
                 Toast.makeText(MainActivity.this, email, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, password, Toast.LENGTH_SHORT).show();
+
+                if (email.equals("a") && password.equals("123"))
+                {
+                    lblMessage.setText("Welcome");
+
+                    Toast.makeText(MainActivity.this, "Welcome", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    lblMessage.setText("Invalid");
+                    Toast.makeText(MainActivity.this,"Invalid email,password" , Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
