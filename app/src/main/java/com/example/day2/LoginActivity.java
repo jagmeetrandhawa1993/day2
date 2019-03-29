@@ -1,5 +1,6 @@
 package com.example.day2;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,7 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private EditText edtEmail;
     private EditText edtPassword;
@@ -19,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
 
         edtEmail = findViewById(R.id.editEmail);
@@ -36,19 +37,25 @@ public class MainActivity extends AppCompatActivity {
                 String email = edtEmail.getText().toString();
                 String password = edtPassword.getText().toString();
                 // Toast.makeText(getApplicationContext(), email, Toast.LENGTH_SHORT).show();
-                Toast.makeText(MainActivity.this, email, Toast.LENGTH_SHORT).show();
-                Toast.makeText(MainActivity.this, password, Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, email, Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, password, Toast.LENGTH_SHORT).show();
 
                 if (email.equals("a") && password.equals("123"))
                 {
                     lblMessage.setText("Welcome");
 
-                    Toast.makeText(MainActivity.this, "Welcome", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Welcome", Toast.LENGTH_SHORT).show();
+
+//Navigation
+                    Intent mIntent = new Intent(LoginActivity.this, HomeActivity.class);
+                    //Set value to pass in next page
+                    mIntent.putExtra("name", "Jagmeet");
+                    startActivity(mIntent);
                 }
                 else
                 {
                     lblMessage.setText("Invalid");
-                    Toast.makeText(MainActivity.this,"Invalid email,password" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this,"Invalid email,password" , Toast.LENGTH_SHORT).show();
                 }
             }
         });
